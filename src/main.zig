@@ -4,29 +4,29 @@ const c = @cImport({
     @cInclude("rlgl.h");
 });
 
-pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+//----------------------------------------------------------------------------------
+// Constants definition
+//----------------------------------------------------------------------------------
+const WIN_WIDTH = 800;
+const WIN_HEIGHT = 600;
+const PLAYER_MAX_LIFE = 5;
+const LINES_OF_BRICKS = 5;
+const BRICKS_PER_LINE = 20;
 
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
-    c.InitWindow(800, 600, "hello");
+//----------------------------------------------------------------------------------
+// Types and Structures Definition
+//----------------------------------------------------------------------------------
+
+pub fn main() !void {
+    c.InitWindow(WIN_WIDTH, WIN_HEIGHT, "ZingZong");
 
     defer c.CloseWindow();
 
     c.SetTargetFPS(60);
-
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
 
     while (!c.WindowShouldClose()) {
         c.BeginDrawing();
         c.ClearBackground(c.BLACK);
         c.EndDrawing();
     }
-
-    try bw.flush(); // don't forget to flush!
 }
