@@ -20,12 +20,9 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+
     const raylib = raylib_dep.artifact("raylib");
     b.installArtifact(raylib);
-
-    // const raylib_mod = b.addModule("raylib", .{
-    //     .source_file = Build.LazyPath.relative("src/init_raylib.zig"),
-    // });
 
     const exe = b.addExecutable(.{
         .name = "zingzong",
