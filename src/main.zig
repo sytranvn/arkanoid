@@ -84,7 +84,7 @@ fn InitGame() void {
 
 // Update game (one frame)
 fn UpdateGame() void {
-    if (!gameOver) {
+    if (player.life != 0) {
         if (rl.IsKeyPressed(rl.KEY_P))
             paused = !paused;
         if (!paused) {
@@ -126,6 +126,50 @@ fn UpdateGame() void {
                 ball.position = rl.Vector2{ .x = player.position.x + PLAYER_SIZE.x / 2, .y = player.position.y - ball.radius };
                 ball.active = false;
                 ball.speed = rl.Vector2{ .x = 0, .y = 0 };
+            }
+            // Collision ball-bricks
+            for (0..LINES_OF_BRICKS) |i| {
+                for (0..BRICKS_PER_LINE) |j| {
+                    if (bricks[i][j].active) {
+                        if (rl.CheckCollisionCircleRec(ball.position, ball.radius, rl.Rectangle{ .x = bricks[i][j].position.x, .y = bricks[i][j].position.y, .width = BRICK_SIZE.x, .height = BRICK_SIZE.y })) {
+                            ball.speed.x *= -1;
+                            ball.speed.y *= -1;
+                            bricks[i][j].active = false;
+                        }
+                        // hit below
+                        // if ((ball.position.y - ball.radius) <= (bricks[i][j].position.y + BRICK_SIZE.y / 2) and
+                        //     // (ball.position.y - ball.radius > bricks[i][j].position.y + BRICK_SIZE.y + ball.speed.y) and
+                        //     // (std.math.fabs(ball.position.x - bricks[i][j].position.x) < BRICK_SIZE.x / 2 + ball.radius * 2 / 3) and
+                        //     ball.speed.y < 0)
+                        // {
+                        //     rl.TraceLog(rl.LOG_INFO, "HIT ball %f %f brick %d %d - %f", ball.position.y, ball.position.x, i, j, ball.speed.y);
+                        // }
+                        // if ((ball.position.y - ball.radius) <= (bricks[i][j].position.y + BRICK_SIZE.y / 2) and
+                        //     // (ball.position.y - ball.radius > bricks[i][j].position.y + BRICK_SIZE.y + ball.speed.y) and
+                        //     // (std.math.fabs(ball.position.x - bricks[i][j].position.x) < BRICK_SIZE.x / 2 + ball.radius * 2 / 3) and
+                        //     ball.speed.y < 0)
+                        // {
+                        //     ball.speed.y *= -1;
+                        //     rl.TraceLog(rl.LOG_INFO, "Ball speed %f", ball.speed.y);
+                        //     bricks[i][j].active = false;
+                        // }
+                        // // hit above
+                        // else if (false) {
+                        //     ball.speed.y *= -1;
+                        //     bricks[i][j].active = false;
+                        // }
+                        // // hit left
+                        // else if (false) {
+                        //     ball.speed.x *= -1;
+                        //     bricks[i][j].active = false;
+                        // }
+                        // // hit left
+                        // else if (false) {
+                        //     ball.speed.x *= -1;
+                        //     bricks[i][j].active = false;
+                        // }
+                    }
+                }
             }
         }
     }
