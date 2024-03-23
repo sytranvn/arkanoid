@@ -1,0 +1,14 @@
+This work is derived from https://github.com/raysan5/raylib-games/blob/master/classics/src/arkanoid.c
+
+/*******************************************************************************************
+*
+*   raylib - classic game: arkanoid
+*
+*   Sample game developed by Marc Palau and Ramon Santamaria
+*
+*   This game has been created using raylib v1.3 (www.raylib.com)
+*   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
+*
+*   Copyright (c) 2015 Ramon Santamaria (@raysan5)
+*
+********************************************************************************************/
