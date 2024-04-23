@@ -6,9 +6,11 @@
 
     .dependencies = .{
         // we depend on the duck package described in B
-        .raylib = .{
-            .url = "https://github.com/raysan5/raylib/archive/refs/tags/5.0.tar.gz",
-	    .hash = "1220c28847ca8e8756734ae84355802b764c9d9cf4de057dbc6fc2b15c56e726f27b"
+        .raylib = .{ .url = "https://github.com/raysan5/raylib/archive/e0f6faa151589a185a04c2c723c01daff1b0a78f.tar.gz", .hash = "122015fa9680267cb4c97b0883a8556c10b8a38c75f3938f2693e2d93ea326d26604" },
+        .@"zig-yaml" = .{
+            .url = "https://github.com/kubkon/zig-yaml/archive/refs/heads/main.tar.gz",
+            .hash = "122048d8af4b11b51bd355e7e0ca4601a9ca5c6afa93d86abd526ca8ae5a855b0e49",
         },
     },
+    .paths = .{""},
 }
