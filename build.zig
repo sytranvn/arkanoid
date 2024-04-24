@@ -51,6 +51,7 @@ fn buildNative(b: *Build, target: Build.ResolvedTarget, optimize: OptimizeMode, 
 
 // for web builds, the Zig code needs to be built into a library and linked with the Emscripten linker
 fn buildWeb(b: *Build, target: Build.ResolvedTarget, optimize: OptimizeMode, dep_raylib: *Build.Dependency) !void {
+    // ref https://github.com/floooh/pacman.zig/blob/main/build.zig
     const pacman = b.addStaticLibrary(.{
         .name = "pacman",
         .target = target,
