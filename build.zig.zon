@@ -1,16 +1,16 @@
 .{
-    // this is the name of our own project
-    .name = "zingzong",
-    // this is the version of our own project
+    .name = "zig-arkanoid",
     .version = "0.0.0",
 
     .dependencies = .{
-        // we depend on the duck package described in B
-        .raylib = .{ .url = "https://github.com/raysan5/raylib/archive/e0f6faa151589a185a04c2c723c01daff1b0a78f.tar.gz", .hash = "122015fa9680267cb4c97b0883a8556c10b8a38c75f3938f2693e2d93ea326d26604" },
-        .@"zig-yaml" = .{
-            .url = "https://github.com/kubkon/zig-yaml/archive/refs/heads/main.tar.gz",
-            .hash = "122048d8af4b11b51bd355e7e0ca4601a9ca5c6afa93d86abd526ca8ae5a855b0e49",
+        .raylib = .{
+            .url = "https://github.com/sytranvn/raylib/archive/refs/heads/buil-zig-zon.tar.gz",
+            .hash = "1220fb906a4e9cd91deaf52a73beb1e2579eace0b91afd0e314b0ab4a8479eb793af",
         },
     },
-    .paths = .{""},
+    .paths = .{
+    "src",
+    "build.zig",
+    "build.zig.zon"
+    },
 }
